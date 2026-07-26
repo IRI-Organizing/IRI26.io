@@ -35,6 +35,18 @@ python3 -m http.server
 
 then visit http://localhost:8000
 
+## Visibility
+
+Every page carries `<meta name="robots" content="noindex, nofollow">`, so
+search engines leave the site out of their results. The URL itself is still
+reachable by anyone who has it — GitHub Pages has no password or login on the
+free and Pro plans. Treat the link as unlisted, not private.
+
+A `robots.txt` in this repo would have no effect: crawlers only read it from
+the domain root (`pengzedong.github.io/robots.txt`), which belongs to a
+different repo. The meta tag is what does the work here, and it is the
+stronger signal anyway.
+
 ## Publishing with GitHub Pages
 
 Settings → Pages → Build and deployment → Deploy from a branch, then pick this
