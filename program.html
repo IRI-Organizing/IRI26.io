@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Conference Program · IEEE IRI 2026</title>
-<meta name="description" content="Detailed program for IEEE IRI 2026.">
+<meta name="description" content="Detailed program for IEEE IRI 2026, searchable by author name or paper title.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -25,20 +25,203 @@
 <main class="wrap">
   <div class="hero">
     <h1>IRI Conference Program</h1>
-    <p>The detailed program for July 31 – August 2, 2026.</p>
+    <p>July 31 – August 2, 2026. Search for your name to find when and where you present.</p>
+  </div>
+
+  <div class="search">
+    <label class="sr-only" for="q">Search the program by author name or paper title</label>
+    <input id="q" type="search" disabled autocomplete="off" spellcheck="false"
+           placeholder="Search your name, e.g. Zhang — or a paper title">
+    <p id="status" class="search-status">Loading the program…</p>
+    <ol id="hits" class="hits"></ol>
   </div>
 
   <div class="actions">
-    <a class="btn" href="https://ieee-iri.github.io/resources/documents/IEEE_IRI2026_Detailed_Program_Jul24.pdf" target="_blank" rel="noopener">Open the program (PDF)</a>
-    <a class="btn secondary" href="https://ieee-iri.github.io/resources/documents/IEEE_IRI2026_Detailed_Program_Jul24.pdf" download>Download</a>
+    <a class="btn" href="assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf" download>Download (PDF)</a>
   </div>
 
-  <object class="viewer" data="https://ieee-iri.github.io/resources/documents/IEEE_IRI2026_Detailed_Program_Jul24.pdf" type="application/pdf">
-    <div class="placeholder">
-      <strong>The PDF can’t be displayed here.</strong>
-      Use the buttons above to open or download the program.
-    </div>
-  </object>
+  <!-- Loaded only on screens that can actually render a PDF inline; see below. -->
+  <iframe id="viewer" class="viewer" title="IEEE IRI 2026 detailed program" hidden></iframe>
+
+<script>
+(function () {
+  var PDF = 'assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf';
+  var MAX_HITS = 20;
+
+  var input = document.getElementById('q');
+  var status = document.getElementById('status');
+  var list = document.getElementById('hits');
+  var viewer = document.getElementById('viewer');
+  var entries = [];
+
+  // Phones render an embedded PDF as an empty grey box, so the viewer is only
+  // built where it works — elsewhere the search results and the download
+  // button carry the page, and a result opens the PDF in its own tab.
+  var wide = window.matchMedia('(min-width: 760px)');
+
+  function syncViewer() {
+    if (wide.matches && !viewer.src) {
+      viewer.src = PDF;
+      viewer.hidden = false;
+    } else if (!wide.matches) {
+      viewer.hidden = true;
+    } else {
+      viewer.hidden = false;
+    }
+  }
+
+  syncViewer();
+  if (wide.addEventListener) wide.addEventListener('change', syncViewer);
+
+  // Accents are dropped so "Martínez" is reachable by typing "Martinez", and
+  // punctuation is dropped so "Zhang, Yixin" matches "Yixin Zhang" — attendees
+  // search their name in their own order, not the surname-first order the
+  // program prints.
+  function normalize(text) {
+    return text
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function tokens(text) {
+    var n = normalize(text);
+    return n ? n.split(' ') : [];
+  }
+
+  function escapeHtml(text) {
+    return text.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  // Marks each query token wherever it appears, comparing on the normalized
+  // form so an accented or punctuated original still highlights.
+  function highlight(text, queryTokens) {
+    if (!queryTokens.length) return escapeHtml(text);
+    var out = '';
+    var word = '';
+    var flush = function () {
+      if (!word) return;
+      var bare = normalize(word);
+      var hit = queryTokens.some(function (t) { return bare.indexOf(t) === 0; });
+      out += hit ? '<mark>' + escapeHtml(word) + '</mark>' : escapeHtml(word);
+      word = '';
+    };
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (/[A-Za-z0-9\u00c0-\u024f'\u2019-]/.test(ch)) {
+        word += ch;
+      } else {
+        flush();
+        out += escapeHtml(ch);
+      }
+    }
+    flush();
+    return out;
+  }
+
+  // Every token must appear, in any order and anywhere in the record, so
+  // "peng zedong", "zedong peng" and "peng llm" all land on the same paper.
+  function matches(entry, queryTokens) {
+    return queryTokens.every(function (t) {
+      return entry.haystack.indexOf(t) !== -1;
+    });
+  }
+
+  function meta(entry) {
+    return [
+      entry.session ? 'Session ' + entry.session : '',
+      entry.day,
+      entry.time,
+      entry.room,
+    ].filter(Boolean).join(' · ');
+  }
+
+  function render(query) {
+    var queryTokens = tokens(query);
+    list.innerHTML = '';
+
+    if (!queryTokens.length) {
+      status.textContent = entries.length + ' papers. Type a name to find your session.';
+      return;
+    }
+
+    var found = entries.filter(function (e) { return matches(e, queryTokens); });
+
+    if (!found.length) {
+      status.textContent = 'No match for “' + query.trim() + '”. Try a surname on its own, ' +
+        'or a word from the paper title.';
+      return;
+    }
+
+    status.textContent = found.length === 1
+      ? '1 paper found.'
+      : found.length + ' papers found.';
+
+    found.slice(0, MAX_HITS).forEach(function (entry) {
+      var item = document.createElement('li');
+      var link = document.createElement('a');
+      link.className = 'hit';
+      link.href = PDF + '#page=' + entry.page;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.innerHTML =
+        '<span class="hit-title">' + highlight(entry.title, queryTokens) + '</span>' +
+        '<span class="hit-authors">' + highlight(entry.authors, queryTokens) + '</span>' +
+        '<span class="hit-meta">' + escapeHtml(meta(entry)) +
+        ' <span class="hit-page">page ' + entry.page + '</span></span>';
+      link.addEventListener('click', function (event) {
+        // Where the PDF is already on the page, jump the embedded copy instead
+        // of spawning a tab; otherwise let the link open the file itself.
+        if (!wide.matches) return;
+        event.preventDefault();
+        viewer.src = PDF + '#page=' + entry.page;
+        viewer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    if (found.length > MAX_HITS) {
+      var more = document.createElement('li');
+      more.className = 'hits-more';
+      more.textContent = 'Showing the first ' + MAX_HITS + ' of ' + found.length +
+        ' — add another word to narrow it down.';
+      list.appendChild(more);
+    }
+  }
+
+  fetch('assets/program-index.json')
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      entries = data.entries.map(function (e) {
+        e.haystack = normalize([e.title, e.authors, e.id, e.session, e.sessionName].join(' '));
+        return e;
+      });
+      input.disabled = false;
+      render(input.value);
+      input.addEventListener('input', function () { render(input.value); });
+      input.addEventListener('keydown', function (event) {
+        if (event.key !== 'Enter') return;
+        var first = list.querySelector('.hit');
+        if (first) first.click();
+      });
+    })
+    .catch(function () {
+      // Opening the file straight from disk blocks the fetch, which is the
+      // usual cause here — the published site and any local web server work.
+      input.disabled = true;
+      status.textContent = 'Search needs the page to be served over http. ' +
+        'The program itself is still available below.';
+    });
+})();
+</script>
 </main>
 
 <footer class="site-footer">

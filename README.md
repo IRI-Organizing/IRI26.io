@@ -8,9 +8,38 @@ dependencies — plain HTML and one stylesheet.
 | File | Purpose |
 | --- | --- |
 | `index.html` | Landing page with the three cards |
-| `program.html` | Embeds / links the detailed program PDF |
+| `program.html` | Searchable program, plus the PDF itself |
 | `map-parking.html` | Venue rooms, parking info, weekend parking map |
 | `certificate.html` | Placeholder — content to be added |
+
+## Program search
+
+`program.html` searches `assets/program-index.json`, which lists all 102
+papers with their authors, session, day, time, room and — the part that makes
+the jump work — the PDF page they appear on. Typing a name filters the list;
+picking a result moves the embedded PDF to that page.
+
+Matching ignores case, accents and punctuation, and requires every word typed
+to appear somewhere in the record. The program prints names surname-first
+("Peng, Zedong"), so this is what lets an attendee find themselves by typing
+their name the way they normally write it.
+
+### Updating the PDF
+
+The page numbers in the index belong to one specific version of the PDF, so
+the two have to be replaced together:
+
+```
+cp <new program>.pdf assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf
+npm install pdfjs-dist
+node tools/build-index.js
+```
+
+If the file is given a new name, update `PDF` in `tools/build-index.js` and
+the three references in `program.html`. A new workshop track numbers its
+papers with its own prefix (`IRI`, `AIHC`, `EMRITE` so far) — add it to
+`ID_PREFIXES` in the build script or its papers will be skipped. The script
+prints the entry count; if it drops, something stopped parsing.
 
 ## The weekend parking map
 
