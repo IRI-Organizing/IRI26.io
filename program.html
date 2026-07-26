@@ -37,7 +37,11 @@
   </div>
 
   <div class="actions">
-    <a class="btn" href="assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf" download>Download (PDF)</a>
+    <!-- On a phone this hands the file to the browser's own PDF viewer, which
+         is the only way to read the whole program there — an embedded viewer
+         renders as an empty box. -->
+    <a class="btn" href="assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf"
+       target="_blank" rel="noopener">Open the program (PDF)</a>
   </div>
 
   <!-- Loaded only on screens that can actually render a PDF inline; see below. -->
