@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map &amp; Parking · IEEE IRI 2026</title>
+<meta name="description" content="Venue locations on the UW Bothell campus and weekend parking information for IEEE IRI 2026.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">IEEE IRI 2026 <span>· UW Bothell</span></a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="program.html">Program</a>
+      <a href="map-parking.html" aria-current="page">Map &amp; Parking</a>
+      <a href="certificate.html">Certificate</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Map and Parking</h1>
+    <p>Where each part of the conference happens, and where to leave your car.</p>
+  </div>
+
+  <h2>Venues</h2>
+  <div class="panel">
+    <p>Conference events will take place across the following locations on the UW Bothell campus.
+      Please refer to the <a href="https://www.uwb.edu/about/directions" target="_blank" rel="noopener">campus map</a> for help getting around.</p>
+    <ul class="venues">
+      <li><strong>Discovery Hall (DISC) 061</strong> – Keynote presentations and opening message</li>
+      <li><strong>Discovery Hall (DISC) 162 &amp; 252</strong> – Parallel sessions</li>
+      <li><strong>North Creek Events Center</strong> – Lunches, dinner, and award ceremony</li>
+      <li><strong>Discovery Hall (DISC) Level 1 Lobby &amp; Vista Area</strong> – Coffee breaks and casual hangout</li>
+      <li><strong>Discovery Hall (DISC) Lower Level</strong> – Registration desk</li>
+    </ul>
+  </div>
+
+  <h2>Parking</h2>
+  <div class="panel">
+    <p>On <strong>Friday, July 31</strong>, in-person attendees who plan to drive to campus will receive a
+      complimentary parking QR code, which will be shared with registered attendees closer to the event.
+      Please note that this code is valid only on Friday, July 31.</p>
+    <p>On <strong>Saturday, August 1</strong> and <strong>Sunday, August 2</strong>, parking is free on the
+      designated surface lots shown on the weekend parking map below.</p>
+  </div>
+
+  <h2>Weekend parking map</h2>
+  <figure class="map-figure">
+    <img id="parking-map" src="assets/weekend-parking-map.png"
+         alt="UW Bothell weekend parking map. Complimentary weekend parking is available on the Upper Surface Lot; the West Garage, Discovery Lot, South Garage, North Garage and Husky Hall lot are $4 weekend parking.">
+    <figcaption>
+      Orange areas (Upper Surface Lot and the UWBB lots east of campus) are complimentary on weekends.
+      Blue areas — West Garage, Discovery Lot, South Garage, North Garage and the Husky Hall lot — are $4 weekend parking.
+      <a href="assets/weekend-parking-map.png" target="_blank" rel="noopener">Open full size</a>
+    </figcaption>
+  </figure>
+
+  <!-- If the map image hasn't been uploaded yet, show a note instead of a broken image. -->
+  <script>
+    document.getElementById('parking-map').addEventListener('error', function () {
+      var figure = this.closest('.map-figure');
+      var note = document.createElement('div');
+      note.className = 'map-missing';
+      note.textContent = 'The weekend parking map image will be posted here shortly.';
+      figure.replaceWith(note);
+    });
+  </script>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">IEEE IRI 2026 · University of Washington Bothell</div>
+</footer>
+
+</body>
+</html>
