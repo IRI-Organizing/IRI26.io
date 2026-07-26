@@ -12,18 +12,12 @@ dependencies — plain HTML and one stylesheet.
 | `map-parking.html` | Venue rooms, parking info, weekend parking map |
 | `certificate.html` | Placeholder — content to be added |
 
-## Adding the weekend parking map
+## The weekend parking map
 
-`map-parking.html` expects the map image at:
-
-```
-assets/weekend-parking-map.png
-```
-
-Drop the file there and it appears automatically. Until it exists, the page
-shows a short "posted here shortly" note instead of a broken image. A `.jpg`
-works too — just update the two `assets/weekend-parking-map.png` references in
-`map-parking.html`.
+`map-parking.html` shows `assets/UWB_Weekend_Parking_Map.jpeg`. To swap in a
+newer version, either overwrite that file or update the two references to it
+in `map-parking.html`. If the file is ever missing, the page falls back to a
+short "posted here shortly" note rather than a broken image.
 
 ## Running locally
 
