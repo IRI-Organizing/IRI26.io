@@ -70,11 +70,6 @@ body {
   text-decoration: none;
 }
 
-.brand span {
-  color: var(--muted);
-  font-weight: 500;
-}
-
 .nav {
   display: flex;
   flex-wrap: wrap;
