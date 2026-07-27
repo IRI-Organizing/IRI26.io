@@ -74,5 +74,22 @@ stronger signal anyway.
 
 Settings → Pages → Build and deployment → Deploy from a branch, then pick this
 branch and the `/ (root)` folder. All links are relative, so the site works
-from a project subpath (`https://<user>.github.io/IRI26.io/`) as well as a
-custom domain.
+from a project subpath (`https://<user>.github.io/<repo>/`) as well as a
+custom domain — nothing here hardcodes the repository name, so renaming the
+repository needs no code change.
+
+## Reusing this for the next edition
+
+Nothing is generated per year, so the next edition is a content swap rather
+than a rebuild:
+
+1. Replace `assets/` — the program PDF and the parking map. Point `PDF` in
+   `tools/build-index.js` and the two references in `program.html` at the new
+   filename, then rerun `node tools/build-index.js`.
+2. Find-and-replace `IEEE IRI 2026` across the four HTML files. It appears in
+   each page's `<title>`, description, header brand and footer.
+3. Update the dates, which live in the `.hero` paragraph of `index.html` and
+   `program.html`.
+4. Update the venue list and the parking dates in `map-parking.html`.
+
+Everything else — layout, styles, search — carries over untouched.
