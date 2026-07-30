@@ -42,7 +42,11 @@ const STRUCTURAL = [
   /^IEEE IRI Conference Day/i,
   /^Detailed Program$/i,
   /^\d{1,2}:\d{2}\s*[ap]?m?\s*-\s*\d{1,2}:\d{2}\s*[ap]m/i,
+  // The lunch label wraps as "11:30am-" / "1:00pm" right after the last paper
+  // of the morning. Both halves have to go: the tail is set in the title font,
+  // so anything left behind is read as part of that paper's title.
   /^\d{1,2}:\d{2}[ap]m-$/i,
+  /^\d{1,2}:\d{2}\s*[ap]m$/i,
   /^(Coffee\s+)?Break$/i,
   /^Lunch(\s+Break)?$/i,
   /^Dinner/i,
