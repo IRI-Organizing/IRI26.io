@@ -30,7 +30,7 @@ The page numbers in the index belong to one specific version of the PDF, so
 the two have to be replaced together:
 
 ```
-cp <new program>.pdf assets/IEEE_IRI2026_Detailed_Program_Jul24.pdf
+cp <new program>.pdf assets/IEEE_IRI2026_Detailed_Program_Jul29.pdf
 npm install pdfjs-dist
 node tools/build-index.js
 ```

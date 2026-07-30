@@ -1,5 +1,5 @@
 {
- "pdf": "IEEE_IRI2026_Detailed_Program_Jul24.pdf",
+ "pdf": "IEEE_IRI2026_Detailed_Program_Jul29.pdf",
  "entries": [
   {
    "id": "IRI 8",
@@ -195,8 +195,8 @@
   },
   {
    "id": "IRI 152",
-   "title": "When Not to Edit: Principled Abstention for Activation-Space Interventions in Language Models",
-   "authors": "Osafo, NanaYaw, Doku, Ronald, Rawat, Danda",
+   "title": "When Not to Edit: Reliability Diagnostics for Activation-Space Interventions in Language Models",
+   "authors": "Osafo, Nana, Yaw, Doku, Ronald, Rawat, Danda",
    "session": "B1",
    "sessionName": "LLM Fine-Tuning, Evaluation & Reasoning",
    "chair": "Siva Bayyavarapu",
@@ -664,7 +664,7 @@
   {
    "id": "IRI 150",
    "title": "TeleHSupport: A Multimodal, Literacy-Aware AI-enabled Kiosk for User-Centered Care Planning",
-   "authors": "Dabhi, Saumya, Poursardar, Faryaneh, Gustin, Tina, Montemayor , Ariana, Haislip , Connor, Clarke , Janelle, Barthold , Grace",
+   "authors": "Poursardar, Faryaneh; Dabhi, Saumya; Montemayor, Ariana; Haislip, Connor; Clarke, Janelle; Barthold, Grace; Gustin, Tina",
    "session": "E1",
    "sessionName": "Applied Data Science & Decision Support",
    "chair": "",
@@ -1192,7 +1192,7 @@
   {
    "id": "IRI 225",
    "title": "Scientific AI Agents Must Learn and Share",
-   "authors": "Chen, Jake",
+   "authors": "Thomas Pan, Jake Y. Chen",
    "session": "H2",
    "sessionName": "Vision, Language & Emerging Applications",
    "chair": "Min Chen",
