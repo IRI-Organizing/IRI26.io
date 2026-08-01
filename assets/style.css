@@ -217,6 +217,12 @@ a { color: var(--accent); }
   color: var(--accent);
 }
 
+.actions-note {
+  margin: 0 4px 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 /* ---------- program search ---------- */
 
 .sr-only {
