@@ -1,5 +1,5 @@
 {
- "pdf": "IEEE_IRI2026_Detailed_Program_Jul29.pdf",
+ "pdf": "IEEE_IRI2026_Detailed_Program_Jul31.pdf",
  "entries": [
   {
    "id": "IRI 8",
@@ -17,18 +17,6 @@
    "id": "IRI 9",
    "title": "Event-Correlated MCP Agents for Asynchronous Enterprise Systems",
    "authors": "Bayyavarapu, Siva Rama Krishna Varma, Venganti, Vijayakumar, Hiremath, Vishwanath",
-   "session": "A1",
-   "sessionName": "AI Systems, Agents & Cloud-Native Orchestration",
-   "chair": "",
-   "room": "DISC 162",
-   "day": "Friday, July 31",
-   "time": "9:45-11:30am",
-   "page": 1
-  },
-  {
-   "id": "IRI 43",
-   "title": "Skill-Based Architecture for Reusable, AI-Native Enterprise Modules: An Empirical Study",
-   "authors": "Jathar, Nikhil",
    "session": "A1",
    "sessionName": "AI Systems, Agents & Cloud-Native Orchestration",
    "chair": "",
@@ -65,6 +53,18 @@
    "id": "IRI 188",
    "title": "A Lightweight Causal Evidence Pipeline for Root-Cause Localization in Cloud-Native Systems",
    "authors": "Dua, Mukesh, Gautam, Aniruddha Singh, Chowdhury, Raju, Kundu, Tarun",
+   "session": "A1",
+   "sessionName": "AI Systems, Agents & Cloud-Native Orchestration",
+   "chair": "",
+   "room": "DISC 162",
+   "day": "Friday, July 31",
+   "time": "9:45-11:30am",
+   "page": 2
+  },
+  {
+   "id": "IRI 43",
+   "title": "Skill-Based Architecture for Reusable, AI-Native Enterprise Modules: An Empirical Study",
+   "authors": "Jathar, Nikhil",
    "session": "A1",
    "sessionName": "AI Systems, Agents & Cloud-Native Orchestration",
    "chair": "",
@@ -239,7 +239,7 @@
    "room": "DISC 252",
    "day": "Friday, July 31",
    "time": "1:00-3:00pm",
-   "page": 2
+   "page": 3
   },
   {
    "id": "IRI 115",
@@ -530,6 +530,18 @@
    "page": 4
   },
   {
+   "id": "EMRITE2601",
+   "title": "The Impact of Paid Generative AI on Quality of Life: A Poverty Premium Perspective",
+   "authors": "Wei-Lun Chang and Yan-Yi Huang",
+   "session": "D1",
+   "sessionName": "Healthcare AI I: Diagnostics & Risk Prediction",
+   "chair": "",
+   "room": "DISC 162",
+   "day": "Saturday, August 1st",
+   "time": "9:45-11:30am",
+   "page": 4
+  },
+  {
    "id": "IRI 91",
    "title": "SplitBench: Reusable Benchmarking for Split Learning and Split Federated Learning",
    "authors": "Trepac, Samuel, Mills, Joseph, Amannejad, Yasaman",
@@ -618,19 +630,19 @@
    "title": "A Data-Driven Optimization Framework for Profitable E-Waste Refurbishment in U.S. Recycling Systems",
    "authors": "Rahman, Md saifur, Mahmud, MD Abdullah Al",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
    "time": "1:00-3:00pm",
-   "page": 4
+   "page": 5
   },
   {
    "id": "IRI 103",
    "title": "AI-Augmented Catastrophe Modeling with An Intelligent Orchestration Workflow",
    "authors": "Patel, Jainil Anilkumar, Wang, Tianyi, Hamid, Shahid, Shyu, Mei-Ling, Chen, Shu-Ching",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -642,7 +654,7 @@
    "title": "A CatBoost-Based Ablation Study of Scheduling Heuristics in Automobile Repossession",
    "authors": "Sinclair, Andy, Billion-Polak, Preston, Khoshgoftaar, Taghi",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -654,7 +666,7 @@
    "title": "Risk-Stratified Explainability of Attorney Involvement in Workers’ Compensation Claims",
    "authors": "Zuvieta, Chelsea, Vivian , Gonzalo, Khoshgoftaar, Taghi",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -666,7 +678,7 @@
    "title": "TeleHSupport: A Multimodal, Literacy-Aware AI-enabled Kiosk for User-Centered Care Planning",
    "authors": "Poursardar, Faryaneh; Dabhi, Saumya; Montemayor, Ariana; Haislip, Connor; Clarke, Janelle; Barthold, Grace; Gustin, Tina",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -678,7 +690,7 @@
    "title": "MARS: Multi-Agent Re-ranking for Repeat-Order Food Delivery Recommendation",
    "authors": "Tian, Jiahao, Wang, Zhenkai",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -690,7 +702,7 @@
    "title": "An Integration Framework Reusing Geochemical Surveys in Crop Nutrient Management",
    "authors": "Jaware, Sahana",
    "session": "E1",
-   "sessionName": "Applied Data Science & Decision Support",
+   "sessionName": "",
    "chair": "",
    "room": "DISC 162",
    "day": "Saturday, August 1st",
@@ -779,18 +791,6 @@
    "room": "DISC 252",
    "day": "Saturday, August 1st",
    "time": "1:00-3:00pm",
-   "page": 5
-  },
-  {
-   "id": "EMRITE2601",
-   "title": "The Impact of Paid Generative AI on Quality of Life: A Poverty Premium Perspective",
-   "authors": "Wei-Lun Chang and Yan-Yi Huang",
-   "session": "F1",
-   "sessionName": "EM-RITE Workshop",
-   "chair": "Min-Yuh Day",
-   "room": "DISC 162",
-   "day": "Saturday, August 1st",
-   "time": "3:15-5:00pm",
    "page": 5
   },
   {

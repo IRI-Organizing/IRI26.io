@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const PDF = path.join(ROOT, 'assets', 'IEEE_IRI2026_Detailed_Program_Jul29.pdf');
+const PDF = path.join(ROOT, 'assets', 'IEEE_IRI2026_Detailed_Program_Jul31.pdf');
 const OUT = path.join(ROOT, 'assets', 'program-index.json');
 
 // A paper starts with its submission id. Each workshop numbers its own track,
@@ -22,9 +22,9 @@ const OUT = path.join(ROOT, 'assets', 'program-index.json');
 const ID_PREFIXES = ['IRI', 'AIHC', 'EMRITE'];
 // The "(15 min)" duration sometimes wraps onto its own line in the PDF's
 // two-column layout, so the duration is optional here and the leftover
-// "min)" is filtered out as structural below. The Jul29 program stars one
-// id ("*AIHC8") without defining the marker anywhere, so a leading
-// asterisk is accepted and dropped rather than letting it hide the paper.
+// "min)" is filtered out as structural below. The program stars one id
+// ("*AIHC8") without defining the marker anywhere, so a leading asterisk is
+// accepted and dropped rather than letting it hide the paper.
 const ID_RE = new RegExp(
   `^\\*?((?:${ID_PREFIXES.join('|')})\\s*\\d+)\\s*(?:\\((\\d+)\\s*(?:min\\))?)?`
 );
